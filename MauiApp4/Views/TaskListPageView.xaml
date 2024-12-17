@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp4.Views.TaskListPageView">
+
+    <StackLayout Margin="10">
+        <Label  Text="Список" FontSize="28"/>
+        <Button Text="Добавить заметку" Command="{Binding AddUpdateCommand}" HorizontalOptions="EndAndExpand" />
+
+        <CollectionView x:Name="TasksList" ItemsSource="{Binding MyTasks}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView>
+                        <SwipeView.LeftItems>
+                            <SwipeItems>
+                                <!--<SwipeItemView>
+                                    <VerticalStackLayout  BackgroundColor="LightBlue">
+                                        <Label Text="Изменить" 
+                                               HorizontalTextAlignment="Center" 
+                                               VerticalTextAlignment="Center" FontAttributes="Bold" TextColor="White" />
+                                    </VerticalStackLayout>
+                                </SwipeItemView>
+                                <SwipeItemView>
+                                    <VerticalStackLayout BackgroundColor="Red">
+                                        <Label Text="Удалить" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="White" />
+                                    </VerticalStackLayout>
+                                </SwipeItemView>
+                                <SwipeItem Text="Edit" IconImageSource="dotnet_bot" BackgroundColor="LightBlue" 
+                                           CommandParameter="{Binding .}"
+                                           Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewModels:StudentListPageViewModel}},Path=EditStudentCommand}" />
+                                <SwipeItem Text="Delete" IconImageSource="dotnet_bot" BackgroundColor="Red"  CommandParameter="{Binding .}"
+                                           Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewModels:StudentListPageViewModel}},Path=DeleteStudentCommand}" />-->
+                            </SwipeItems>
+                        </SwipeView.LeftItems>
+                        <Frame Margin="10" Padding="10">
+                            <VerticalStackLayout>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    
+                                    <HorizontalStackLayout Grid.Row="0" Spacing="10">
+                                        <Label Text="{Binding Title}" FontSize="18" FontAttributes="Bold"/>
+                                        <Label Text="{Binding Description}" FontSize="18" FontAttributes="Bold"/>
+                                    </HorizontalStackLayout>
+                                    <CheckBox Grid.Row="0" Grid.RowSpan="2" HorizontalOptions="EndAndExpand"/>
+                                    <Label Grid.Row="1" Text="{Binding Day_of_week}"/>
+                                </Grid>
+                            </VerticalStackLayout>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Path=BindingContext.DisplayActionCommand, Source={x:Reference TasksList}}" CommandParameter="{Binding TaskID}"/>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp4.Views.AddUpdateTaskDetailView">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="TextColor" Value="SlateGray" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <StackLayout Margin="10" Spacing="15">
+        <VerticalStackLayout>
+            <Label Text="Заголовок"  />
+            <Entry Text="{Binding Title}" Placeholder="Заголовок"/>
+            <BoxView HeightRequest="0.8" Color="Gray" />
+        </VerticalStackLayout>
+
+
+        <VerticalStackLayout>
+            <Label Text="Заметка" />
+            <Entry  Text="{Binding Description}" Placeholder="Описание"/>
+            <BoxView HeightRequest="0.8" Color="Gray" />
+        </VerticalStackLayout>
+
+
+        <VerticalStackLayout>
+            <Label Text="День недели"/>
+            <Picker SelectedItem="{Binding SelectedItem}">
+                <Picker.Items>
+                    <x:String>Понедельник</x:String>
+                    <x:String>Вторник</x:String>
+                    <x:String>Среда</x:String>
+                    <x:String>Четверг</x:String>
+                    <x:String>Пятница</x:String>
+                    <x:String>Суббота</x:String>
+                    <x:String>Воскресенье</x:String>
+                </Picker.Items>
+            </Picker>
+            <BoxView HeightRequest="0.8" Color="Gray"/>
+        </VerticalStackLayout>
+
+        <Button Text="Сохранить" Command="{Binding AddUpdateCommand}"/>
+        <Button Text="Назад" Command="{Binding GoToMenuCommand}"/>
+    </StackLayout>
+</ContentPage>
